@@ -360,24 +360,93 @@ require get_template_directory() . '/inc/customizer.php';
 * modified by nina@ninalp.com
 */
 
+
+// add_filter('generate_rewrite_rules', 'customposttype_rewrites');
+// function customposttype_rewrites($wp_rewrite) {
+// 	print 'TEST';
+// 	echo "<pre>";
+// 	print_r($wp_rewrite);
+// 	echo "</pre>";
+// 	exit;
+// 	$newrules = array();
+// 	$newrules['mycustomposttype/?$'] = 'index.php?post_type=mycustomposttype';
+// 	$wp_rewrite->rules = $newrules + $wp_rewrite->rules;
+// }
+
+
+// function custom_rewrite_basic() {
+// 	add_rewrite_rule('^nutrition/([^/]*)/([^/]*)/?','index.php?page_id=12&food=$matches[1]&variety=$matches[2]','top');
+// 	add_rewrite_rule('^leaf/([0-9]+)/?', 'index.php?page_id=$matches[1]', 'top');
+// }
+// add_action('init', 'custom_rewrite_basic');
+
+
+function post_link( $post_link, $id = 0 ){
+
+    $post = get_post($id);  
+    
+    if ( is_object( $post ) && $post->post_type == 'projectpages' ){
+    	// FROM /projectpages/stills-2/ TO /project_group_slug/stills-2/
+    	$post = populateProjectTaxonomyData($post);
+        $post_link = str_replace( 'projectpages' , $post->project_group_slug , $post_link );
+
+    }
+
+    return $post_link;
+}
+add_filter( 'post_type_link', 'post_link', 1, 3 );
+
+
+function term_link( $term_link, $id = 0 ){
+
+    $term_link = str_replace( 'projectgroup/' , '', $term_link );
+
+    return $term_link;
+}
+add_filter( 'term_link', 'term_link', 1, 3 );
+
+
+
+
+function post_type_rewrites_init(){
+    add_rewrite_rule("^([^/]+)/([^/]+)/?",'index.php?post_type=projectpages&projectgroup=$matches[1]&projectpages=$matches[2]','top');
+    add_rewrite_rule('^([^/]*)/?','index.php?projectgroup=$matches[1]','top');
+}
+add_action( 'init', 'post_type_rewrites_init' );
+
+
+flush_rewrite_rules( true ); 
+
+function populateProjectTaxonomyData($post){
+
+	$taxonomy = "projectgroup";
+	$terms = wp_get_post_terms( $post->ID, $taxonomy );
+	$pg_term = $terms[0];
+	$post->project_group_slug = $pg_term->slug;
+	$post->project_name = $pg_term->name;
+
+	return $post;
+
+}
+
 function populateProjectData($post){
 	//apply custom fields to objects:
 	$post->sort_order = get_field('sort_order');
 	$post->display_title = get_field('display_title');
 
-	$taxonomy = "projectgroup";
-	$terms = wp_get_post_terms( get_the_ID(), $taxonomy );
-	$pg_term = $terms[0];
-	$post->project_group_slug = $pg_term->slug;
-	$post->project_name = $pg_term->name;
+	$post = populateProjectTaxonomyData($post);
 
 	//GET LAYOUT AND POPULATE CUSTOM DATA:
 	$taxonomy = "projectpageformats";
-	$format_terms = wp_get_post_terms( get_the_ID(), $taxonomy );
+	$format_terms = wp_get_post_terms( $post->ID, $taxonomy );
 	$format_term = $format_terms[0];
 	$post->layout_type = $format_term->slug;
 
-	$post->url = '/'.$post->project_group_slug.'/'.$post->post_name;
+
+	
+
+	$post->url = get_post_permalink( $post->ID );
+	#'/'.$post->project_group_slug.'/'.$post->post_name;
 
 	switch($post->layout_type){
 		case 'image-and-text':					
@@ -523,6 +592,9 @@ function getProjectMenuItems(){
 		if($visible != 'No'){
 			$sort_order = get_field('sort_order', 'projectgroup_'.$term->term_id);
 			$term->sort_order = $sort_order;
+			
+
+
 			array_push($filtered_terms, $term);
 		}
 	}
@@ -556,6 +628,8 @@ function getProjectMenuItems(){
 		// //Get Projects:
 		$projects = getGroupProjects($term->name);
 		$menuitem->projects = $projects;
+
+		$menuitem->url = get_term_link( $term );
 
 		if(count($projects)>0){
 			$menuitem->first_project = $projects[0];	

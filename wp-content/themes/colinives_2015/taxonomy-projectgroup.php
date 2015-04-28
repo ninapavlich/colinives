@@ -16,26 +16,7 @@ get_header('project'); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-		<?php
-		// Start the loop.
-		while ( have_posts() ) : the_post();
-
-			// Include the page content template.
-			//get_template_part( 'content', 'page' );
-
-			$post = populateProjectData($post);
-			if($post->layout_type=='image-and-text'){
-				get_template_part( 'content', 'projectpage-text-and-image' );
-			}elseif($post->layout_type=='image-gallery'){
-				get_template_part( 'content', 'projectpage-image-gallery' );
-			}elseif($post->layout_type=='vimeo-video'){
-				get_template_part( 'content', 'projectpage-vimeo-video' );
-			}
-
-		// End the loop.
-		endwhile;
-		?>
-
+		
 		<nav clas="submenu">
 			<ul>
 				<?php $submenu = getSubMenuItems(); ?>
