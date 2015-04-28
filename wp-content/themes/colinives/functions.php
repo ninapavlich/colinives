@@ -638,6 +638,11 @@ function getGlobalMenuItems(){
 		//Get Projects:
 		$projects = getGroupProjects($term->name);
 		$menuitems[$k]['projects'] = $projects;
+		
+		if(count($projects)>0){
+			$menuitems[$k]['first_project'] = array_values($projects)[0];	
+		}
+		
 
 
 		$k++;

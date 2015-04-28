@@ -59,24 +59,17 @@
 				
 				<?php foreach($project_menu as $project): ?>
 
-
-				<?php $first_project = $project->projects[0] ?>
-
-
-				<pre>
-				<?= print_r($project->projects) ?>
-			</pre>
-
-				<?php if($first_project): ?>
+				
+				
 				<li>
-					<a href="">
+					<?php if($project->first_project): ?><a href="<?= $project->first_project->url ?>"><?php endif ?>
 						<figure>
 							<figcaption><?= $project->name ?></figcaption>
-							<img src="<?= $first_project->image_source ?>" alt="<?= $first_project->image_title ?>" itemprop="image" />
+							<img src="<?= $project->thumbnail_image_thumbnail ?>" alt="<?= $project->thumbnail_title ?>" itemprop="image" />
 						</figure>
-					</a>
+					<?php if($project->first_project): ?></a><?php endif ?>
 				</li>
-				<?php endif ?>
+				
 				<?php endforeach; ?>
 			</ul>
 		</nav>

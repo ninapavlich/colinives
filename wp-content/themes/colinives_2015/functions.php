@@ -377,6 +377,8 @@ function populateProjectData($post){
 	$format_term = $format_terms[0];
 	$post->layout_type = $format_term->slug;
 
+	$post->url = '/'.$post->project_group_slug.'/'.$post->post_name;
+
 	switch($post->layout_type){
 		case 'image-and-text':					
 			$project_image = wp_get_attachment_image_src(get_field('project_image'), 'full');	
@@ -533,23 +535,33 @@ function getProjectMenuItems(){
 	$count = count($filtered_terms);
 	$k = 0;
 	foreach ( $filtered_terms as $term ) {
-	
-		$menuitems[$k]['name'] = $term->name;
-		$menuitems[$k]['slug'] = $term->slug;
-		$menuitems[$k]['id'] = $term->term_id;
+		
+		$menuitem = new stdClass();
+
+		$menuitem->name = $term->name;
+		$menuitem->slug = $term->slug;
+		$menuitem->id = $term->term_id;
 
 
 		// //Get thumbnail data:
 		$project_group = $menuitems[$k];
 		$thumbnail_id = get_field('project_group_thumbnail', 'projectgroup_'.$term->term_id);
 		$image = wp_get_attachment_image_src($thumbnail_id, 'full');	
-		$menuitems[$k]['thumbnail_image'] = $image[0];
-		$menuitems[$k]['thumbnail_title'] = get_the_title($thumbnail_id);
+		$thumbnail = wp_get_attachment_image_src($thumbnail_id, 'thumbnail');	
+		
+		$menuitem->thumbnail_image = $image[0];
+		$menuitem->thumbnail_image_thumbnail = $thumbnail[0];
+		$menuitem->thumbnail_title = get_the_title($thumbnail_id);
 		
 		// //Get Projects:
 		$projects = getGroupProjects($term->name);
-		$menuitems[$k]['projects'] = $projects;
+		$menuitem->projects = $projects;
 
+		if(count($projects)>0){
+			$menuitem->first_project = $projects[0];	
+		}
+		
+		$menuitems[$k] = $menuitem;
 
 		$k++;
 		
