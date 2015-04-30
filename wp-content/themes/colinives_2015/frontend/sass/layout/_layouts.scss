@@ -107,6 +107,13 @@
 			margin: 0 0 1.714285714rem;
 			line-height: 1.714285714;
 		}
+		.urls{
+			@include micro-clearfix;
+			li{
+				float:left;
+				margin-right: 10px;
+			}
+		}
 	}
 }
 

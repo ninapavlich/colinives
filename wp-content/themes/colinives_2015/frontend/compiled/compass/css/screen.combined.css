@@ -861,6 +861,22 @@ h1.entry-title {
   margin: 0 0 1.714285714rem;
   line-height: 1.714285714;
 }
+/* line 2, ../../../sass/lib/_general-mixins.scss */
+#main article .urls:before, #main article .urls:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+/* line 8, ../../../sass/lib/_general-mixins.scss */
+#main article .urls:after {
+  clear: both;
+}
+/* line 112, ../../../sass/layout/_layouts.scss */
+#main article .urls li {
+  float: left;
+  margin-right: 10px;
+}
 
 /* line 1, ../../../sass/layout/_subnav.scss */
 .subnav {

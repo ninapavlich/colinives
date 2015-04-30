@@ -26,6 +26,8 @@ get_header('project'); ?>
 			$post = populateProjectData($post);
 			if($post->layout_type=='image-and-text'){
 				get_template_part( 'content', 'projectpage-text-and-image' );
+			}elseif($post->layout_type=='person'){
+				get_template_part( 'content', 'projectpage-person' );
 			}elseif($post->layout_type=='image-gallery'){
 				get_template_part( 'content', 'projectpage-image-gallery' );
 			}elseif($post->layout_type=='video-gallery'){

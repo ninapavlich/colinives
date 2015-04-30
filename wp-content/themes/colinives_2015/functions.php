@@ -471,6 +471,17 @@ function populateProjectData($post){
 			$post->image_source = $project_image[0];
 			$post->description = get_field('project_description');
 		break;
+		case 'person':					
+			$project_image = wp_get_attachment_image_src(get_field('project_image'), 'full');	
+			$project_image_title = get_the_title(get_field('project_image'));
+			$post->image_title = $project_image_title;
+			$post->image_source = $project_image[0];
+			$post->description = get_field('project_description');
+
+			$url_elements = get_field('website_url');
+			$post->url_elements = $url_elements;
+
+		break;
 		case 'image-gallery':
 		case 'video-gallery':
 			$gallery_elements = get_field('gallery_element');
