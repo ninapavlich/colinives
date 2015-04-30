@@ -472,6 +472,7 @@ function populateProjectData($post){
 			$post->description = get_field('project_description');
 		break;
 		case 'image-gallery':
+		case 'video-gallery':
 			$gallery_elements = get_field('gallery_element');
 			$gallery_output = array();
 			

@@ -28,7 +28,8 @@
 				}
 			}
 		}
-		.format-image-gallery .full{
+		.format-image-gallery .full,
+		.format-video-gallery .full{
   			//text-align: center;
   			img{
 				width: 100%;
@@ -40,7 +41,8 @@
 				margin-right:1.5%;
 			}
 		}
-		.format-image-gallery .thumbnails{
+		.format-image-gallery .thumbnails,
+		.format-video-gallery .thumbnails{
 			@include breakpoint($m) {
 				float: left;
 				width: 29%;
@@ -64,7 +66,8 @@
 			}
 
 		}
-		.format-image-gallery{
+		.format-image-gallery,
+		.format-video-gallery{
 			.thumbnails{
 
 				img{

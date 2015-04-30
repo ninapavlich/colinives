@@ -1,15 +1,11 @@
 $(document).ready(function() {
 
     
-    //PLACE VERY SIMPLE INITIALIZATION IN HERE
-    //PLEASE PLACE ANYTHING OVER 10 LINES IN ITS OWN BOOTSTRAP FILE 
-    //TO KEEP THINGS TIDY
 
     /* Houston, we have javascript */
-    // $('html').addClass('js');
+    $('html').addClass('js');
 
     
-
     $('.genieNav').genieMenu();
 
     $(document).intraPageLoad({
@@ -58,11 +54,19 @@ $(document).ready(function() {
     $(window).bind('resize', function(event){
        updateScrollPane();
     });
+
+    $(".mobile-toggle").bind("click", function(event){
+        $('.genieNav').toggleClass("open");
+    });
     function clearPageContent(){
         //TODO
+        $('.genieNav').removeClass("open");
     }
     function newPageContent(){
         $(".entry-content").fitVids({ customSelector: "iframe"});      
+
+        $('.genieNav').removeClass("open");
+        
 
         addGalleryListeners();
 
@@ -108,15 +112,13 @@ $(document).ready(function() {
     }
 
     function addGalleryListeners(){
-        $('.thumbnails a.gallery_image').bind("click", function(event){
+        $('.format-image-gallery .thumbnails a').bind("click", function(event){
             event.preventDefault();
             var href = $(this).attr("href");
             var target = $(this).attr("data-target");
             $(target).find('img').attr("src", href);
-            $(target).find('img').show();
-            $(target).find('iframe').hide();
         });
-        $('.thumbnails a.gallery_video').bind("click", function(event){
+        $('.format-video-gallery .thumbnails a').bind("click", function(event){
             event.preventDefault();
             var href = $(this).attr("href");
             var target = $(this).attr("data-target");
@@ -126,10 +128,7 @@ $(document).ready(function() {
             $(target).find('iframe').attr("width", width);
             $(target).find('iframe').attr("height", height);
 
-            console.log("width? "+width+" height? "+height)
-            $(target).find('img').hide();
-            $(target).find('iframe').show();
-
+            // $(target).find(".fluid-width-video-wrapper").show();
             $(".entry-content").fitVids({ customSelector: "iframe"});      
         });
     }

@@ -86,11 +86,14 @@
 
 
     <!-- CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
     <?php if ( WP_DEBUG == true ): ?>
     <link rel="stylesheet" media="all" href="<?=$theme_dir ?>/css/screen.combined.css">    
     <?php else: ?>
     <link rel="stylesheet" media="all" href="<?=$theme_dir ?>/css/screen.combined.css">    
     <?php endif ?>
+
 
     
     <!-- Modernizr -->
@@ -132,6 +135,7 @@
 <div id="page" class="hfeed site">
 	<header id="masthead" class="site-header" role="banner">
 		<nav class="genieNav">
+            <a href="#" class="mobile-toggle"><i class="fa fa-bars"></i></a>
 			<ul>
 				
 				<?php foreach($project_menu as $project): ?>

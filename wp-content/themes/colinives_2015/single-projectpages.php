@@ -28,6 +28,8 @@ get_header('project'); ?>
 				get_template_part( 'content', 'projectpage-text-and-image' );
 			}elseif($post->layout_type=='image-gallery'){
 				get_template_part( 'content', 'projectpage-image-gallery' );
+			}elseif($post->layout_type=='video-gallery'){
+				get_template_part( 'content', 'projectpage-video-gallery' );
 			}elseif($post->layout_type=='vimeo-video'){
 				get_template_part( 'content', 'projectpage-vimeo-video' );
 			}

@@ -21,11 +21,9 @@
 
 
 	<div class="entry-content" itemscope itemtype="https://schema.org/ImageGallery">
-        <div class="format-image-gallery">
+        <div class="format-video-gallery">
             <div class="full">
-
-                <img class="gallery_image_full" src="<?= $post->gallery_elements[0]['full_image'] ?>" />
-                
+                <iframe class="gallery_video_full" frameborder="0" width="<?= $post->gallery_elements[0]['vimeo_embed_width']; ?>" height="<?= $post->gallery_elements[0]['vimeo_embed_height']; ?>" src="http://player.vimeo.com/video/<?= $post->gallery_elements[0]['vimeo_video_id']; ?>?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" ></iframe>
             </div>
 
 
@@ -34,7 +32,8 @@
                 <?php foreach($post->gallery_elements as $gallery_element): ?>
 
                 <li>
-                    <a href="<?= $gallery_element['full_image'] ?>" data-target=".full" class="gallery">
+                    <a href="http://player.vimeo.com/video/<?= $gallery_element['vimeo_video_id']; ?>?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" data-target=".full" data-width="<?= $gallery_element['vimeo_embed_width']; ?>" data-height="<?= $gallery_element['vimeo_embed_height']; ?>" class="gallery_video">
+
                         <img src="<?= $gallery_element['thumbnail_image'] ?>" alt="<?= $gallery_element['full_image_title'] ?>"  />
                     </a>
                 </li>

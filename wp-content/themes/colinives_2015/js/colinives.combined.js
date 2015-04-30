@@ -20881,7 +20881,8 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
         defaults = {
             resizeInterval: 100,
             maxMenuSlideMargin: 0,
-            mouseDetectRegionY: 225
+            mouseDetectRegionY: 225,
+            minWidth:768
         };
 
     // The actual plugin constructor
@@ -20909,7 +20910,7 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
     GenieMenu.prototype = {
 
         init: function() {
-
+            
             var self = this;
             var runningW = 30;
             $(this.element).find('li').each(function(){        
@@ -20932,6 +20933,8 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
         render: function() {
             //This funciton is expensive, so only do it when menu is active and has focus
             if(this.window_focus==false) return;
+
+            if($(window).width() < this.options.minWidth) return;
 
             //Update view
             this.updateMenuButtons();
@@ -20977,10 +20980,11 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
         updateMenuButtons: function(){
             
             //update size of buttons
+            var window_width = $(window).width();
             for(var k = 0; k<this.menuButtons.length; k++){
                 var button = this.menuButtons[k];                
                 var distance = this.calculateDistance(button, this.mouseX, this.mouseY);
-                var scale = this.distanceToScale(distance);
+                var scale = window_width > this.options.minWidth? this.distanceToScale(distance) : 1;
                 this.animateMenuButton(button, scale, 0);
             }
 
@@ -21283,15 +21287,11 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
 $(document).ready(function() {
 
     
-    //PLACE VERY SIMPLE INITIALIZATION IN HERE
-    //PLEASE PLACE ANYTHING OVER 10 LINES IN ITS OWN BOOTSTRAP FILE 
-    //TO KEEP THINGS TIDY
 
     /* Houston, we have javascript */
-    // $('html').addClass('js');
+    $('html').addClass('js');
 
     
-
     $('.genieNav').genieMenu();
 
     $(document).intraPageLoad({
@@ -21340,11 +21340,19 @@ $(document).ready(function() {
     $(window).bind('resize', function(event){
        updateScrollPane();
     });
+
+    $(".mobile-toggle").bind("click", function(event){
+        $('.genieNav').toggleClass("open");
+    });
     function clearPageContent(){
         //TODO
+        $('.genieNav').removeClass("open");
     }
     function newPageContent(){
         $(".entry-content").fitVids({ customSelector: "iframe"});      
+
+        $('.genieNav').removeClass("open");
+        
 
         addGalleryListeners();
 
@@ -21390,15 +21398,13 @@ $(document).ready(function() {
     }
 
     function addGalleryListeners(){
-        $('.thumbnails a.gallery_image').bind("click", function(event){
+        $('.format-image-gallery .thumbnails a').bind("click", function(event){
             event.preventDefault();
             var href = $(this).attr("href");
             var target = $(this).attr("data-target");
             $(target).find('img').attr("src", href);
-            $(target).find('img').show();
-            $(target).find('iframe').hide();
         });
-        $('.thumbnails a.gallery_video').bind("click", function(event){
+        $('.format-video-gallery .thumbnails a').bind("click", function(event){
             event.preventDefault();
             var href = $(this).attr("href");
             var target = $(this).attr("data-target");
@@ -21408,10 +21414,7 @@ $(document).ready(function() {
             $(target).find('iframe').attr("width", width);
             $(target).find('iframe').attr("height", height);
 
-            console.log("width? "+width+" height? "+height)
-            $(target).find('img').hide();
-            $(target).find('iframe').show();
-
+            // $(target).find(".fluid-width-video-wrapper").show();
             $(".entry-content").fitVids({ customSelector: "iframe"});      
         });
     }

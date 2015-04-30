@@ -11,7 +11,8 @@
         defaults = {
             resizeInterval: 100,
             maxMenuSlideMargin: 0,
-            mouseDetectRegionY: 225
+            mouseDetectRegionY: 225,
+            minWidth:768
         };
 
     // The actual plugin constructor
@@ -39,7 +40,7 @@
     GenieMenu.prototype = {
 
         init: function() {
-
+            
             var self = this;
             var runningW = 30;
             $(this.element).find('li').each(function(){        
@@ -62,6 +63,8 @@
         render: function() {
             //This funciton is expensive, so only do it when menu is active and has focus
             if(this.window_focus==false) return;
+
+            if($(window).width() < this.options.minWidth) return;
 
             //Update view
             this.updateMenuButtons();
@@ -107,10 +110,11 @@
         updateMenuButtons: function(){
             
             //update size of buttons
+            var window_width = $(window).width();
             for(var k = 0; k<this.menuButtons.length; k++){
                 var button = this.menuButtons[k];                
                 var distance = this.calculateDistance(button, this.mouseX, this.mouseY);
-                var scale = this.distanceToScale(distance);
+                var scale = window_width > this.options.minWidth? this.distanceToScale(distance) : 1;
                 this.animateMenuButton(button, scale, 0);
             }
 
