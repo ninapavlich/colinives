@@ -64,7 +64,7 @@
             //This funciton is expensive, so only do it when menu is active and has focus
             if(this.window_focus==false) return;
 
-            if($(window).width() < this.options.minWidth) return;
+            //if($(window).width() < this.options.minWidth) return;
 
             //Update view
             this.updateMenuButtons();

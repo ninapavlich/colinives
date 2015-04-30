@@ -16,12 +16,13 @@ $(document).ready(function() {
             var isBlog = target_url.toLowerCase().indexOf('blog') >= 0 || current_url.toLowerCase().indexOf('blog') >= 0;
             var isAdmin = target_url.toLowerCase().indexOf('wp-admin') >= 0;
             var isFile = getPath(target_url).indexOf('.') >= 0;
+            var isHash = target_url.replace(current_url, '') == '#' || target_url.replace(current_url, '') == '';
 
             // console.log("getPath(target_url): "+getPath(target_url))
             // console.log("current_domain: "+current_domain+" target_domain: "+target_domain)
 
             // console.log("target_url: "+target_url+" domainsMatch: "+domainsMatch+" getDomain(target_url): "+getDomain(target_url))
-            if(domainsMatch==true && isBlog==false && isAdmin==false && isFile==false){
+            if(domainsMatch==true && isBlog==false && isAdmin==false && isFile==false && isHash==false){
             	return true;
             }
             return false;
