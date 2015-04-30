@@ -14,8 +14,8 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope itemtype="http://schema.org/Person">
 	<header class="entry-header">
 		<h1 class="entry-title">
-			<span class="project-name" itemprop="name"><?= $post->project_name ?></span>
-            <span class="subproject-name"><?= $post->display_title ?></span>
+			<span class="project-name" ><?= $post->project_name ?></span>
+            <span class="subproject-name" itemprop="name"><?= $post->display_title ?></span>
 		</h1>
 	</header>
 	<div class="entry-content">
