@@ -119,7 +119,7 @@ function twentyfifteen_setup() {
 	add_editor_style( array( 'css/editor-style.css', 'genericons/genericons.css', twentyfifteen_fonts_url() ) );
 }
 endif; // twentyfifteen_setup
-add_action( 'after_setup_theme', 'twentyfifteen_setup' );
+// add_action( 'after_setup_theme', 'twentyfifteen_setup' );
 
 /**
  * Register widget area.
@@ -256,7 +256,7 @@ function twentyfifteen_scripts() {
 		'collapse' => '<span class="screen-reader-text">' . __( 'collapse child menu', 'twentyfifteen' ) . '</span>',
 	) );
 }
-add_action( 'wp_enqueue_scripts', 'twentyfifteen_scripts' );
+// add_action( 'wp_enqueue_scripts', 'twentyfifteen_scripts' );
 
 /**
  * Add featured image as background image to post navigation elements.
@@ -360,6 +360,9 @@ require get_template_directory() . '/inc/customizer.php';
 * modified by nina@ninalp.com
 */
 
+//remove emoji junk from header
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
 // add_filter('generate_rewrite_rules', 'customposttype_rewrites');
 // function customposttype_rewrites($wp_rewrite) {
@@ -384,11 +387,19 @@ require get_template_directory() . '/inc/customizer.php';
 function post_link( $post_link, $id = 0 ){
 
     $post = get_post($id);  
+
+    // echo 'post_link '.$post_link;
+    // echo 'post_type '.$post->post_type;
+    // exit;
     
     if ( is_object( $post ) && $post->post_type == 'projectpages' ){
     	// FROM /projectpages/stills-2/ TO /project_group_slug/stills-2/
     	$post = populateProjectTaxonomyData($post);
         $post_link = str_replace( 'projectpages' , $post->project_group_slug , $post_link );
+
+    }else if ( is_object( $post ) && $post->post_type == 'post' ){
+    	// FROM /projectpages/stills-2/ TO /project_group_slug/stills-2/
+    	$post_link = "/blog/".$post_link;
 
     }
 
@@ -409,8 +420,12 @@ add_filter( 'term_link', 'term_link', 1, 3 );
 
 
 function post_type_rewrites_init(){
+
+	// $wp_rewrite->add_permastruct('projectpages', '%projectgroup%/%postname%/', true, 1);
+	add_rewrite_rule("page/([^/]+)/?",'index.php?post_type=page&page=$matches[1]','top');
+	add_rewrite_rule("blog/([^/]+)/?",'index.php?post_type=post&post=$matches[1]','top');
     add_rewrite_rule("^([^/]+)/([^/]+)/?",'index.php?post_type=projectpages&projectgroup=$matches[1]&projectpages=$matches[2]','top');
-    add_rewrite_rule('^([^/]*)/?','index.php?projectgroup=$matches[1]','top');
+    // add_rewrite_rule('^([^/]*)/?','index.php?post_type=projectpages&projectgroup=$matches[1]','top');
 }
 add_action( 'init', 'post_type_rewrites_init' );
 
@@ -650,4 +665,84 @@ function getSubMenuItems(){
 	
 	$current_group = getCurrentProjectGroup();
 	return getGroupProjects($current_group->name);	
+}
+
+function getPageTitle(){
+
+
+	if(is_single()){
+		global $post;
+		
+		if ( is_object( $post ) && $post->post_type == 'projectpages' ){
+			$post = populateProjectData($post);
+			return $post->post_title.' - '.$post->display_title;
+		}
+		return $post->post_title;
+		// return $post;	
+	}else{
+		return bloginfo('name');
+	}
+	
+	//return bloginfo('name');
+	
+}
+function getPageDescription($max=150){
+
+	if(is_single()){
+		global $post;
+		
+		$text = $post->description;
+		// return $post;	
+	}else{
+		$text = get_bloginfo( 'description', 'display' );
+	}
+
+	$stripped = strip_tags($text);
+	$condensed = preg_replace('/\s+/', ' ',$stripped);
+	return trim_text($condensed, $max);
+}
+function getPageImage(){
+
+	// if(is_single()){
+	// 	global $post;
+		
+	// 	if ( is_object( $post ) && $post->post_type == 'projectpages' ){
+	// 		$post = populateProjectData($post);
+	// 		return $post->post_title.' - '.$post->display_title;
+	// 	}
+	// }
+
+	$theme_dir = get_template_directory_uri();
+	return $theme_dir.'/favicons/android-chrome-192x192.png';
+}
+function getCanonicalURL(){
+	if ( !is_singular() )
+		return;
+
+	global $wp_the_query;
+	if ( !$id = $wp_the_query->get_queried_object_id() )
+		return;
+
+	$link = get_permalink( $id );
+
+	if ( $page = get_query_var('cpage') )
+		$link = get_comments_pagenum_link( $page );
+
+	return $link;
+}
+function trim_text($text, $length, $ellipses='...'){
+	
+	$text = strip_tags($text);
+
+	if(strlen($text) <= $length){
+		return $text;
+	}else{
+		return substr($text,0,$length).$ellipses;	
+	}
+}
+function getDateModified(){
+	return 'bananas modified';
+}
+function getDateCreated(){
+	return 'bananas created';
 }

@@ -1,0 +1,179 @@
+/* 
+////////////////////////////////////////////////////////////////////////////
+Grid values
+////////////////////////////////////////////////////////////////////////////
+*/
+$s: 600px;
+$m: 768px;
+$l: 1024px;
+$xl: 1400px;
+
+
+$non-mobile: 1025px;
+$container-max-width: 1170px;
+$tablet-v: 840px;
+$tablet-h: 1025px;
+/* 
+////////////////////////////////////////////////////////////////////////////
+Color values
+////////////////////////////////////////////////////////////////////////////
+*/
+
+$purple:      rgb(118,126,210);
+$orange:      rgb(255,128,0);
+$green:       rgb(127,196,44);
+$blue:        rgb(5,174,191);
+$coral:       rgb(239,67,81);   /*  #ef4351  */
+$fandango:    rgb(158,37,111);  /*  #9e256f  */
+$marineblue:  rgb(11,113,183);  /*  #0b71b7  */
+
+$white:       rgb(255,255,255);
+$black:       rgb(0,0,0);
+
+$dark-gray: #444;
+$light-gray: #EEEEEE;
+$gray: rgb(128,133,135);
+$gray-light-1: tint($gray, 10%);
+$gray-light-2: tint($gray, 20%);
+$gray-light-3: tint($gray, 30%);
+$gray-light-4: tint($gray, 40%);
+$gray-light-5: tint($gray, 50%);
+$gray-light-6: tint($gray, 60%);
+$gray-light-7: tint($gray, 70%);
+$gray-light-8: tint($gray, 80%);
+$gray-light-9: tint($gray, 90%);
+
+
+
+/* 
+////////////////////////////////////////////////////////////////////////////
+Standard applications of color variables
+////////////////////////////////////////////////////////////////////////////
+*/
+
+$text-color: black; 
+$text-color-subtle: $gray-light-1; 
+$heading-color: $purple;
+$caption-color: $gray-light-2;
+
+$link-color: $purple;
+$link-color-hover: $orange;
+
+$selection-bg-color: transparentize($green, .5);
+$selection-text-color: $text-color;
+
+$error: $orange;
+$valid: $blue;
+
+$border-color: $gray-light-8;
+$grid-border: 1px solid $gray-light-6;
+
+$background-color: #fff;
+$background-color-subtle: #eee;
+
+$footer-background-color: $purple;
+$footer-text-color: white;
+
+
+
+/* 
+////////////////////////////////////////////////////////////////////////////
+Layout/spacing variables
+////////////////////////////////////////////////////////////////////////////
+*/
+
+$maxwidth: 81.25rem;
+
+$section-spacing: 4em;
+$header-tall: 140px;
+$header-short: 70px;
+$header-tall-debug: 172px;
+$header-short-debug: 102px;
+$form-padding: .75em;
+
+
+
+
+
+/* 
+////////////////////////////////////////////////////////////////////////////
+Typographic variables
+////////////////////////////////////////////////////////////////////////////
+*/
+
+$sans: Helvetica, Arial, sans-serif;
+$serif: Georgia, 'Times New Roman', serif;
+$display: $sans;
+
+
+@mixin font-regular { 
+	font-family: 'Guardian TextSans Web', $sans;
+	font-weight:  400;
+	font-style:   normal;
+	font-stretch: normal;
+}
+
+@mixin font-bold { 
+  font-family: 'Guardian TextSans Web', $sans;
+  font-weight:  700;
+  font-style:   normal;
+  font-stretch: normal;
+}
+
+@mixin font-italic { 
+  font-family: 'Guardian TextSans Web', $sans;
+  font-weight:  400;
+  font-style:   italic;
+  font-stretch: normal;
+}
+
+@mixin font-bolditalic { 
+  font-family: 'Guardian TextSans Web', $sans;
+  font-weight:  700;
+  font-style:   italic;
+  font-stretch: normal;
+}
+
+@mixin font-display { 
+  font-family: 'Guardian Sans Web', $sans;
+  font-weight:  300;
+  font-style:   normal;
+  font-stretch: normal;
+}
+
+@mixin font-displayitalic { 
+  font-family: 'Guardian Sans Web', $sans;
+  font-weight:  300;
+  font-style:   italic;
+  font-stretch: normal;
+}
+
+@mixin font-fallback { 
+  font-family: $sans;
+}
+
+@mixin font-main-search {
+  font-size: 30px;
+  font-size: 32px;
+  line-height: 30px;
+  font-weight: 100;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@mixin font-main-reset {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: normal;
+}
+
+/* 
+////////////////////////////////////////////////////////////////////////////
+Modular Scale variables
+////////////////////////////////////////////////////////////////////////////
+*/
+
+$ms-ratio: $golden;
+$ms-base: 1.065rem; // Renders 17.0400009155273px;
+
+$border-size: 8px;

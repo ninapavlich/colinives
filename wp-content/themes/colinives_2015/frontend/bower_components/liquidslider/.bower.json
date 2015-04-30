@@ -1,0 +1,46 @@
+{
+  "name": "liquidslider",
+  "version": "2.3.8",
+  "homepage": "http://liquidslider.com",
+  "authors": [
+    "Kevin Batdorf <kevin@kevinbatdorf.com>"
+  ],
+  "description": "A Responsive Content Slider",
+  "main": "src/js/jquery.liquid-slider.js",
+  "keywords": [
+    "content",
+    "slider",
+    "tabs",
+    "mobile"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "examples",
+    "node_modules",
+    "bower_components",
+    "src",
+    ".bowerrc",
+    ".gitignore",
+    "bower.json",
+    "Gruntfile.js",
+    "liquidslider.jquery.json",
+    "package.json",
+    "README.markdown"
+  ],
+  "dependencies": {
+    "jquery": "~1",
+    "jquery-touchswipe": "~1.6.4",
+    "jquery-easing": "*"
+  },
+  "devDependencies": {},
+  "_release": "2.3.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.3.8",
+    "commit": "99465bab8d4ec71cfb77ccbf0c8d1eb26f8f0139"
+  },
+  "_source": "git://github.com/KevinBatdorf/liquidslider.git",
+  "_target": "~2.3.8",
+  "_originalSource": "liquidslider",
+  "_direct": true
+}

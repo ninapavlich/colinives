@@ -1,0 +1,28 @@
+.subnav{
+	@include container;
+	font-size:0.85em;
+	margin:3em auto;
+
+	ul{
+		text-align: center;
+
+
+		li{
+			display: inline;
+			padding: 0 20px;
+			border-left: 1px solid $dark-gray;
+
+			&:first-child{
+				border-left: 1px solid #fff;
+				padding-left:0px;
+			}
+			&:last-child{
+				padding-right:0px;
+			}
+
+			a{
+				text-decoration: none;
+			}
+		}
+	}
+}

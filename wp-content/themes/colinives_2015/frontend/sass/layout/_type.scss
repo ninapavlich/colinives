@@ -1,0 +1,76 @@
+body{
+	font-family: "century gothic","Trebuchet MS",sans-serif;
+  color: $dark-gray;
+  font-size:16px;
+}
+h1, h2, h3, h4, h6, h6{
+  margin-bottom:0.5em;
+}
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.17em; }
+h4 { font-size: 1.12em; }
+h5 { font-size: .83em; }
+h6 { font-size: .75em; }
+
+a{
+  color:$dark-gray;
+  &:hover, &:focus, &.active{
+    color:$gray;
+  }
+  &:focus{
+    outline:0;
+  }
+}
+::selection {
+  background: $light-gray;
+}
+::-moz-selection {
+  background: $light-gray;
+}
+
+
+.front_page_title {
+  color: $light-gray;
+  font-size: 6em;
+  text-align: center;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: 100;
+  overflow: hidden;
+  margin: 0.5em auto 0 auto;
+
+  @include breakpoint($m) {
+    font-size: 9em;
+  }
+  @include breakpoint($l) {
+    font-size: 12em;
+  }  
+}
+h1.entry-title{
+  font-size:1em;
+}
+.entry-header{
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1em;
+}
+.project-title {
+  display:block;
+  
+
+}
+.project-name {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.jspTrack{
+  background: #fff;
+}
+.jspDrag {
+  background: $light-gray;
+}
+.jspVerticalBar {
+  width: 8px;
+}

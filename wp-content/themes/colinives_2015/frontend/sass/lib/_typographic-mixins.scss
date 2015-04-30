@@ -1,0 +1,145 @@
+/* 
+////////////////////////////////////////////////////////////////////////////
+Typographic mixins and extends
+////////////////////////////////////////////////////////////////////////////
+*/
+
+@mixin copy-face {
+  @include font-regular;
+}
+
+@mixin title-face {
+  @include font-display;
+}
+
+@mixin link {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    color: $link-color-hover;
+    text-decoration: underline;
+
+    h1, h2, h3, h4, h5{
+      color: $link-color-hover;
+    }
+  }
+}
+
+@mixin link-colored-bg {
+  color: $text-color;
+
+  &:hover, &:focus {
+    color: $text-color;
+    text-decoration: underline;
+  }
+}
+
+@mixin heading-link {
+  @include link;
+}
+
+@mixin heading {
+  color: $heading-color;
+  margin: 1.5em 0 0.5em;
+  line-height: 1.18;
+  text-rendering: optimizeLegibility;
+  clear: both;
+  &:first-of-type {
+    margin-top: 0; /* so the first heading in any given container lines up flush */
+  }
+  a {
+    @include heading-link;
+  }
+  &.section{
+    border-bottom:$border-size solid;
+    margin-bottom:1em;
+  }
+}
+
+@mixin heading-1 {
+  @include heading;
+  @include title-face;
+  font-size: 2.75em; /* for browsers not supporting rem-based scale */
+  font-size: ms(1.75);
+}
+
+@mixin heading-2 {
+  @include heading;
+  @include title-face;
+  font-size: 2em; /* for browsers not supporting rem-based scale */
+  font-size: ms(1.5);
+}
+
+@mixin heading-3 {
+  @include heading;
+  @include copy-face;
+  font-size: 1.5em; /* for browsers not supporting rem-based scale */
+  font-size: ms(.5);
+}
+
+@mixin heading-4 {
+  @include heading;
+  @include copy-face;
+  font-size: 1.2em; /* for browsers not supporting rem-based scale */
+  font-size: ms(0);
+}
+
+@mixin heading-5 {
+  @include heading;
+  @include copy-face;
+  font-size: 1em; /* for browsers not supporting rem-based scale */
+  font-size: ms(-.5);
+}
+
+@mixin heading-6 {
+  @include heading;
+  @include copy-face;
+  font-size: 0.875em; /* for browsers not supporting rem-based scale */
+  font-size: ms(-1);
+}
+
+
+
+
+
+@mixin paragraph {
+  @include copy-face;
+  font-size: 1em; /* for browsers not supporting rem-based scale */
+  font-size: ms(0);
+  line-height: 1.5;
+}
+
+@mixin li {
+  @include paragraph;
+}
+
+@mixin caps {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@mixin smallcaps {
+  @include caps;
+  font-size: .8em;
+}
+
+@mixin small {
+  font-size: .8em;
+}
+@mixin small-grey {
+  @include small;
+  line-height: 1.5em;
+  color:$gray-light-5;
+}
+
+@mixin sidebar-heading {
+    @include caps;
+    @include font-bold;
+    font-size: 1em; /* IE8 */
+    font-size: 1rem;
+    color: $gray;
+    border-bottom: $border-size solid $purple;
+    padding-bottom: .25em;
+    margin-bottom: .75em;
+}

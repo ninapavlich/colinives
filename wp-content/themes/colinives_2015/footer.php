@@ -9,6 +9,7 @@
  * @since Twenty Fifteen 1.0
  */
 ?>
+<?php $theme_dir = get_template_directory_uri(); ?>
 
 	</div><!-- .site-content -->
 
@@ -37,6 +38,15 @@
   })();
 
 </script>
+
+<!-- JS -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<?php if ( WP_DEBUG == true ): ?>
+<script src="<?=$theme_dir ?>/js/colinives.combined.js" ></script>
+<?php else: ?>
+<script src="<?=$theme_dir ?>/js/colinives.combined.js" ></script>
+<?php endif ?>
 
 </body>
 </html>

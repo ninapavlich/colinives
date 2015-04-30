@@ -8,7 +8,16 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-			TODO -- show recent posts on this page.
+		<article id="post-<?php the_ID(); ?>" class="page-heading">
+			<h1><?= $post->post_title; ?></h1>
+
+			<?= $post->post_content; ?>
+
+		</article><!-- #post-## -->
+
+
+		<?php query_posts('showposts=-1&orderby=date&order=DESC'); ?>
+
 		<?php
 		// Start the loop.
 		while ( have_posts() ) : the_post();

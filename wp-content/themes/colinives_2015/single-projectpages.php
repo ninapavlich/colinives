@@ -36,7 +36,7 @@ get_header('project'); ?>
 		endwhile;
 		?>
 
-		<nav clas="submenu">
+		<nav class="subnav">
 			<ul>
 				<?php $submenu = getSubMenuItems(); ?>
 				<?php foreach($submenu as $project): ?>

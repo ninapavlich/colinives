@@ -8,7 +8,7 @@ get_header('project'); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-		<p>Colin Ives</p>
+			<h1 class="front_page_title">Colin Ives</h1>
 
 		</main><!-- .site-main -->
 	</div><!-- .content-area -->
