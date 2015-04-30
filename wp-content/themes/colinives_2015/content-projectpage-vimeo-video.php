@@ -24,9 +24,10 @@
         <div class="format-vimeo-video">
             <div class="vimeo" >
   				<meta itemprop="embedURL" content="http://player.vimeo.com/video/<?= $post->vimeo_id; ?>?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" />
-                <iframe frameborder="0" width="1000" height="663" src="http://player.vimeo.com/video/<?= $post->vimeo_id; ?>?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" ></iframe>
+                <iframe frameborder="0" width="<?= $post->embed_width; ?>" height="<?= $post->embed_height; ?>" src="http://player.vimeo.com/video/<?= $post->vimeo_id; ?>?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" ></iframe>
             </div>
         </div>
+
     </div>
 
 </article><!-- #post-## -->

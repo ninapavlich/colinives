@@ -1,7 +1,7 @@
 .subnav{
 	@include container;
 	font-size:0.85em;
-	margin:3em auto;
+	margin: 3em auto;
 
 	ul{
 		text-align: center;
@@ -9,8 +9,9 @@
 
 		li{
 			display: inline;
-			padding: 0 20px;
+			padding: 0 12px 0 20px;
 			border-left: 1px solid $dark-gray;
+			letter-spacing: 2px;
 
 			&:first-child{
 				border-left: 1px solid #fff;

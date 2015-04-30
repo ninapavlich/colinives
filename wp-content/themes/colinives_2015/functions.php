@@ -557,7 +557,9 @@ function getGroupProjects($term_name='') {
 	}
 	
 	
-	$menu_query = new WP_Query($args);					
+	$menu_query = new WP_Query($args);	
+
+
 	while ( $menu_query->have_posts() ) {			
 		$menu_query->the_post();
 
@@ -596,7 +598,11 @@ function getProjectMenuItems(){
 			
 	
 	//Get each taxonomy for 'projectpages'
-	$terms = get_terms('projectgroup', 'hide_empty=0');
+	$args = array(
+	    'hide_empty'        => 0,
+	); 
+
+	$terms = get_terms('projectgroup', $args);
 	$filtered_terms = array();
 	
 	//get custom sort order property and apply it to the object so we can sort this array
@@ -641,8 +647,9 @@ function getProjectMenuItems(){
 		$menuitem->thumbnail_title = get_the_title($thumbnail_id);
 		
 		// //Get Projects:
-		$projects = getGroupProjects($term->name);
+		$projects = getGroupProjects($term->slug);
 		$menuitem->projects = $projects;
+		$menuitem->termname = $term->name;
 
 		$menuitem->url = get_term_link( $term );
 

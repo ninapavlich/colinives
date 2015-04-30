@@ -121,8 +121,8 @@
 <body <?php body_class(); ?>>
 
 <?php
-
-	$project_menu = getProjectMenuItems();
+            
+    $project_menu = getProjectMenuItems();
 
 	// echo "<pre>";
 	// print_r($project_menu);

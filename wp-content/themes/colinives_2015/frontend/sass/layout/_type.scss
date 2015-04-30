@@ -22,6 +22,9 @@ a{
     outline:0;
   }
 }
+p{
+  margin-bottom:0.5em;
+}
 ::selection {
   background: $light-gray;
 }
