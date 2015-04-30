@@ -20893,8 +20893,8 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
         this.options = $.extend( {}, defaults, options) ;
 
         this.menuButtons = [];
-        this.mouseX;
-        this.mouseY;
+        this.mouseX=null;
+        this.mouseY=null;
 
         this.window_focus = true;
         this.xmultiplier = 0;
@@ -20982,10 +20982,16 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
             //update size of buttons
             var window_width = $(window).width();
             for(var k = 0; k<this.menuButtons.length; k++){
-                var button = this.menuButtons[k];                
-                var distance = this.calculateDistance(button, this.mouseX, this.mouseY);
-                var scale = window_width > this.options.minWidth? this.distanceToScale(distance) : 1;
-                this.animateMenuButton(button, scale, 0);
+                var button = this.menuButtons[k];   
+
+                if(this.mouseX==null){
+                    var scale = 0.05;
+                }else{
+                    var distance = this.calculateDistance(button, this.mouseX, this.mouseY);
+                    var scale = window_width > this.options.minWidth? this.distanceToScale(distance) : 1;
+                }
+                
+                this.animateMenuButton(button, scale, 0);    
             }
 
 
@@ -21417,6 +21423,12 @@ $(document).ready(function() {
             // $(target).find(".fluid-width-video-wrapper").show();
             $(".entry-content").fitVids({ customSelector: "iframe"});      
         });
+    }
+
+    //TEMP REDIRECTS:
+    if(window.location.hash != ""){
+        var new_url = window.location.hash.replace("#", "")+"/";
+        window.location.href = new_url;
     }
 
     newPageContent();

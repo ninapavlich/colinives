@@ -133,6 +133,12 @@ $(document).ready(function() {
         });
     }
 
+    //TEMP REDIRECTS:
+    if(window.location.hash != ""){
+        var new_url = window.location.hash.replace("#", "")+"/";
+        window.location.href = new_url;
+    }
+
     newPageContent();
     
 });

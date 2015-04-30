@@ -23,8 +23,8 @@
         this.options = $.extend( {}, defaults, options) ;
 
         this.menuButtons = [];
-        this.mouseX;
-        this.mouseY;
+        this.mouseX=null;
+        this.mouseY=null;
 
         this.window_focus = true;
         this.xmultiplier = 0;
@@ -112,10 +112,16 @@
             //update size of buttons
             var window_width = $(window).width();
             for(var k = 0; k<this.menuButtons.length; k++){
-                var button = this.menuButtons[k];                
-                var distance = this.calculateDistance(button, this.mouseX, this.mouseY);
-                var scale = window_width > this.options.minWidth? this.distanceToScale(distance) : 1;
-                this.animateMenuButton(button, scale, 0);
+                var button = this.menuButtons[k];   
+
+                if(this.mouseX==null){
+                    var scale = 0.05;
+                }else{
+                    var distance = this.calculateDistance(button, this.mouseX, this.mouseY);
+                    var scale = window_width > this.options.minWidth? this.distanceToScale(distance) : 1;
+                }
+                
+                this.animateMenuButton(button, scale, 0);    
             }
 
 
