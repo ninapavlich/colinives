@@ -88,12 +88,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-    <?php if ( WP_DEBUG == true ): ?>
-    <link rel="stylesheet" media="all" href="<?=$theme_dir ?>/css/screen.combined.css">    
-    <?php else: ?>
-    <link rel="stylesheet" media="all" href="<?=$theme_dir ?>/css/screen.combined.css">    
-    <?php endif ?>
-
+    <link rel="stylesheet" media="all" href="<?=$theme_dir ?>/css/screen.combined.min.css">    
+    
 
     
     <!-- Modernizr -->

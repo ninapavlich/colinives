@@ -42,11 +42,7 @@
 <!-- JS -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-<?php if ( WP_DEBUG == true ): ?>
-<script src="<?=$theme_dir ?>/js/colinives.combined.js" ></script>
-<?php else: ?>
-<script src="<?=$theme_dir ?>/js/colinives.combined.js" ></script>
-<?php endif ?>
+<script src="<?=$theme_dir ?>/js/colinives.combined.min.js" ></script>
 
 </body>
 </html>
