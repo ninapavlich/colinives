@@ -21247,13 +21247,15 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
             //bind events
             var self = this;
             this.addLinkListeners();
-            window.addEventListener("popstate", function(e) {
-                // console.log('popstate: '+location.href+" "+self.current_url);
-                
-                if(location.href != self.current_url){
-                    self.onLinkClick(null, location.href);    
-                }                
-            });
+            if(window.addEventListener){
+                window.addEventListener("popstate", function(e) {
+                    if(location.href != self.current_url){
+                        self.onLinkClick(null, location.href);    
+                    }                
+                });
+            }else{
+                //ie8 or earlier; no need for popstate
+            }
         },
         addLinkListeners:function(){
             var self = this;
