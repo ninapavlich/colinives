@@ -20,7 +20,7 @@ module.exports = function(grunt) {
             },
             all: {
               src: ["css/*.css","css/vendor/*.css","compiled/compass/css/screen.css"],
-              dest: "compiled/compass/css/screen.combined.css"
+              dest: "compiled/compass/css/screen_combined.css"
             },
         },
 
