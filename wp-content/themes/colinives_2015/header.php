@@ -8,8 +8,15 @@
  * @subpackage Twenty_Fifteen
  * @since Twenty Fifteen 1.0
  */
-?><!DOCTYPE html>
-<html <?php language_attributes(); ?> class="no-js">
+?>
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9 gte-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]>    <html class="no-js gte-ie9" lang="en"> <![endif]-->
+<!--[if !IE ]>    <html class="no-js gte-ie9" lang="en" itemscope itemtype="http://schema.org/WebPage"> <![endif]-->
+<html class="no-js gte-ie9" <?php language_attributes(); ?>  itemscope="" itemtype="http://schema.org/WebPage">
 <head>
 	<?php $theme_dir = get_template_directory_uri(); ?>
 	

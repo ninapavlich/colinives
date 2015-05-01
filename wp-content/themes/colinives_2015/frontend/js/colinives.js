@@ -82,6 +82,11 @@ $(document).ready(function() {
 
     var jScrollPaneApi = null;
     function updateScrollPane(){
+
+        if($('.gte-ie9').length == 0){
+            return;
+        }
+        
         var mobileBreakpoint = 768;
         if($('.format-image-and-text').length > 0){
 
