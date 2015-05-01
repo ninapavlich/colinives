@@ -805,15 +805,16 @@ h1.entry-title {
 #main article .format-image-and-text .text {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
+  min-height: 300px;
   max-width: 450px;
   margin-top: 1em;
 }
-/* line 53, ../../../sass/layout/_layouts.scss */
+/* line 54, ../../../sass/layout/_layouts.scss */
 #main article .format-image-and-text .text.inited {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 59, ../../../sass/layout/_layouts.scss */
+/* line 60, ../../../sass/layout/_layouts.scss */
 #main article .format-image-and-text .text:focus, #main article .format-image-and-text .text *:focus {
   outline: 0;
 }
@@ -824,38 +825,38 @@ h1.entry-title {
     margin-top: 0;
   }
 }
-/* line 73, ../../../sass/layout/_layouts.scss */
+/* line 74, ../../../sass/layout/_layouts.scss */
 #main article .format-image-gallery .thumbnails img,
 #main article .format-video-gallery .thumbnails img {
   width: 21%;
   float: left;
   margin: 4% 4% 0 0;
 }
-/* line 81, ../../../sass/layout/_layouts.scss */
+/* line 82, ../../../sass/layout/_layouts.scss */
 #main article .format-image-gallery .thumbnails li:nth-child(4n+1),
 #main article .format-video-gallery .thumbnails li:nth-child(4n+1) {
   clear: both;
 }
-/* line 85, ../../../sass/layout/_layouts.scss */
+/* line 86, ../../../sass/layout/_layouts.scss */
 #main article .format-image-gallery .thumbnails li:last-child img,
 #main article .format-video-gallery .thumbnails li:last-child img {
   margin-right: 0;
 }
 @media (min-width: 768px) {
-  /* line 92, ../../../sass/layout/_layouts.scss */
+  /* line 93, ../../../sass/layout/_layouts.scss */
   #main article .format-image-gallery .thumbnails img,
   #main article .format-video-gallery .thumbnails img {
     width: 46%;
     float: left;
     margin: 0 0 4% 4%;
   }
-  /* line 98, ../../../sass/layout/_layouts.scss */
+  /* line 99, ../../../sass/layout/_layouts.scss */
   #main article .format-image-gallery .thumbnails li:nth-child(2n+1),
   #main article .format-video-gallery .thumbnails li:nth-child(2n+1) {
     clear: both;
   }
 }
-/* line 105, ../../../sass/layout/_layouts.scss */
+/* line 106, ../../../sass/layout/_layouts.scss */
 #main article .entry-content {
   font-size: .8em;
   margin: 0 0 1.714285714rem;
@@ -872,7 +873,7 @@ h1.entry-title {
 #main article .urls:after {
   clear: both;
 }
-/* line 112, ../../../sass/layout/_layouts.scss */
+/* line 113, ../../../sass/layout/_layouts.scss */
 #main article .urls li {
   float: left;
   margin-right: 10px;

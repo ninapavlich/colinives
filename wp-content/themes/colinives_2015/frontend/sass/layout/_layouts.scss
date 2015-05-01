@@ -50,6 +50,7 @@
 		}
 		.format-image-and-text .text{
 			@include opacity(0);
+			min-height:300px;
 			&.inited{
 				@include opacity(1);
 			}
