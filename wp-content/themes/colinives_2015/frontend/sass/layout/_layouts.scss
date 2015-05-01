@@ -118,14 +118,9 @@
 	}
 }
 
-.no-js, .lt-ie9{
-	#main{
-		article{
-			.format-image-and-text .text{
-				&.inited{
-					@include opacity(1);
-				}
-			}
-		}
+.no-js, 
+.lt-ie9{
+	#main article .format-image-and-text .text{
+		@include opacity(1);
 	}
 }
