@@ -725,6 +725,12 @@ h1.entry-title {
   margin-right: 10px;
 }
 
+/* line 125, ../../../sass/layout/_layouts.scss */
+.no-js #main article .format-image-and-text .text.inited, .lt-ie9 #main article .format-image-and-text .text.inited {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+
 /* line 1, ../../../sass/layout/_subnav.scss */
 .subnav {
   width: 90%;
