@@ -86,7 +86,11 @@
 
 
     <!-- CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
+    <!-- inlined for faster loading -->
+    <style>
+    <?php include 'css/vendor/font-awesome.min.css'; ?>
+    </style>
 
     <!-- <link rel="stylesheet" media="all" href="<?=$theme_dir ?>/css/screen.combined.css">     -->
     <!-- inlined for faster loading -->

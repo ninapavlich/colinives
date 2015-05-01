@@ -12,3 +12,15 @@ RewriteRule . /index.php [L]
 </IfModule>
 
 # END WordPress
+
+<IfModule mod_headers.c>
+    # MONTH
+    <FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+
+    # MONTH
+    <FilesMatch "\.(js|css|swf)$">
+        Header set Cache-Control "max-age=2592000"
+    </FilesMatch>
+</IfModule>
