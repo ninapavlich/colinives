@@ -3534,15 +3534,17 @@ h1.entry-title {
 @media only screen and (max-width: 768px) {
   /* line 92, ../../../sass/layout/_genie-nav.scss */
   .genieNav {
+    position: absolute;
+    top: 0px;
     margin-top: 46px;
     overflow: visible;
   }
-  /* line 97, ../../../sass/layout/_genie-nav.scss */
+  /* line 99, ../../../sass/layout/_genie-nav.scss */
   .genieNav:before {
     display: none;
   }
-  /* line 104, ../../../sass/layout/_genie-nav.scss */
-  .genieNav.open .mobile-toggle.open {
+  /* line 105, ../../../sass/layout/_genie-nav.scss */
+  .genieNav.open .mobile-toggle {
     color: #808587;
     border: 1px solid #808587;
   }
@@ -3572,29 +3574,32 @@ h1.entry-title {
     display: none;
     margin-left: 0 !important;
     width: auto !important;
+    background-color: #fff;
+    top: 5px;
+    position: relative;
   }
-  /* line 134, ../../../sass/layout/_genie-nav.scss */
+  /* line 138, ../../../sass/layout/_genie-nav.scss */
   .genieNav ul li {
     float: none;
   }
-  /* line 137, ../../../sass/layout/_genie-nav.scss */
+  /* line 141, ../../../sass/layout/_genie-nav.scss */
   .genieNav ul li a {
     padding-top: 1em;
     padding-bottom: 1em;
     border-bottom: 1px solid #808587;
     display: block;
   }
-  /* line 142, ../../../sass/layout/_genie-nav.scss */
+  /* line 146, ../../../sass/layout/_genie-nav.scss */
   .genieNav ul li a:hover {
     background-color: #EEEEEE;
   }
-  /* line 146, ../../../sass/layout/_genie-nav.scss */
+  /* line 150, ../../../sass/layout/_genie-nav.scss */
   .genieNav ul li a figure {
     text-align: left;
     width: 100% !important;
     display: table;
   }
-  /* line 151, ../../../sass/layout/_genie-nav.scss */
+  /* line 155, ../../../sass/layout/_genie-nav.scss */
   .genieNav ul li a figure figcaption {
     filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
     opacity: 1;
@@ -3606,7 +3611,7 @@ h1.entry-title {
     padding: 0 1em;
     text-align: right;
   }
-  /* line 161, ../../../sass/layout/_genie-nav.scss */
+  /* line 165, ../../../sass/layout/_genie-nav.scss */
   .genieNav ul li a figure img {
     display: table-cell;
     vertical-align: middle;

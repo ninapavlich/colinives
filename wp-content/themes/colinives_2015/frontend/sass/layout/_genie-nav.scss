@@ -90,7 +90,9 @@
 }
 @media only screen and (max-width: $m)  {
 	.genieNav{
-		
+		position:absolute;
+		top:0px;
+
 		margin-top: 46px;
 		overflow: visible;
 		
@@ -101,10 +103,8 @@
 		&.open{
 
 			.mobile-toggle{
-				&.open{
-					color: $gray;
-					border: 1px solid $gray;
-				}
+				color: $gray;
+				border: 1px solid $gray;
 			}
 			ul{
 				display:block;
@@ -131,6 +131,10 @@
 			display:none;
 			margin-left:0 !important;
 			width:auto !important;
+			background-color: #fff;
+			top: 5px;
+			position: relative;
+
 			li{
 				float:none;
 

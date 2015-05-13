@@ -57,6 +57,7 @@ $(document).ready(function() {
     });
 
     $(".mobile-toggle").bind("click", function(event){
+        event.preventDefault();
         $('.genieNav').toggleClass("open");
     });
     function clearPageContent(){

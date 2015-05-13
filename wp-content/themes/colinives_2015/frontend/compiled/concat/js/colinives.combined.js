@@ -21351,6 +21351,7 @@ $(document).ready(function() {
     });
 
     $(".mobile-toggle").bind("click", function(event){
+        event.preventDefault();
         $('.genieNav').toggleClass("open");
     });
     function clearPageContent(){
@@ -21380,6 +21381,7 @@ $(document).ready(function() {
         if($('.gte-ie9').length == 0){
             return;
         }
+        
         var mobileBreakpoint = 768;
         if($('.format-image-and-text').length > 0){
 
