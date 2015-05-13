@@ -41,8 +41,9 @@ get_header('project'); ?>
 		?>
 
 		<nav class="subnav">
+			<?php $submenu = getSubMenuItems(); ?>
 			<ul>
-				<?php $submenu = getSubMenuItems(); ?>
+				
 				<?php foreach($submenu as $project): ?>
 				
 				<li>

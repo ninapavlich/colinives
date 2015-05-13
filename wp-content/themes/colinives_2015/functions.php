@@ -683,7 +683,8 @@ function getSubMenuItems(){
 	global $post;
 	
 	$current_group = getCurrentProjectGroup();
-	return getGroupProjects($current_group->name);	
+	// return $current_group;
+	return getGroupProjects($current_group->slug);	
 }
 
 function getPageTitle(){
